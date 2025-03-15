@@ -2,7 +2,7 @@
 
 int main() {
     set<string> word_list;
-    load_words(word_list, "words.txt");
+    load_words(word_list, "/home/sgorti1/ICS46/ics-46-hw-9-sindhujagorti/src/words.txt");
 
     string start_word, end_word;
     cout << "Enter start word: ";
