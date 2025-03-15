@@ -1,7 +1,7 @@
 #include "dijkstras.h"
 #include <queue>
 
-vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous){
+vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous){ // using professor's code
     int n = G.numVertices;
     vector<int> distances (n, INF);
     previous.assign(n, -1);
@@ -23,7 +23,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
             int v = e.dst;
             int weight = e.weight;
 
-            if (distances[u] + weight < distances[v]){
+            if (v >= 0 && v < n && distances[u] + weight < distances[v]) { 
                 distances[v] = distances[u] + weight;
                 previous[v] = u;
                 pq.push({distances[v], v});

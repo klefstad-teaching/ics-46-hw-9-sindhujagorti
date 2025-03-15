@@ -228,3 +228,51 @@ Parsed CXX implicit link information from above output:
   implicit fwks: []
 
 
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/sgorti1/ICS46/ics-46-hw-9-sindhujagorti/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_38fee/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_38fee.dir/build.make CMakeFiles/cmTC_38fee.dir/build
+gmake[1]: Entering directory '/home/ics-home/ICS46/ics-46-hw-9-sindhujagorti/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_38fee.dir/CheckIncludeFile.cxx.o
+/usr/bin/c++   -std=c++20 -o CMakeFiles/cmTC_38fee.dir/CheckIncludeFile.cxx.o -c /home/sgorti1/ICS46/ics-46-hw-9-sindhujagorti/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTC_38fee
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38fee.dir/link.txt --verbose=1
+/usr/bin/c++ CMakeFiles/cmTC_38fee.dir/CheckIncludeFile.cxx.o -o cmTC_38fee 
+gmake[1]: Leaving directory '/home/ics-home/ICS46/ics-46-hw-9-sindhujagorti/build/CMakeFiles/CMakeTmp'
+
+
+
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /home/sgorti1/ICS46/ics-46-hw-9-sindhujagorti/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0c86e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0c86e.dir/build.make CMakeFiles/cmTC_0c86e.dir/build
+gmake[1]: Entering directory '/home/ics-home/ICS46/ics-46-hw-9-sindhujagorti/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0c86e.dir/src.cxx.o
+/usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=c++20 -o CMakeFiles/cmTC_0c86e.dir/src.cxx.o -c /home/sgorti1/ICS46/ics-46-hw-9-sindhujagorti/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_0c86e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c86e.dir/link.txt --verbose=1
+/usr/bin/c++ CMakeFiles/cmTC_0c86e.dir/src.cxx.o -o cmTC_0c86e 
+gmake[1]: Leaving directory '/home/ics-home/ICS46/ics-46-hw-9-sindhujagorti/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+

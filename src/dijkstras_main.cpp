@@ -5,7 +5,7 @@ using namespace std;
 int main(){
     Graph G;
     try {
-        file_to_graph("small.txt", G);
+        file_to_graph("/home/sgorti1/ICS46/ics-46-hw-9-sindhujagorti/src/small.txt", G);
     } catch (const runtime_error& e) {
         cerr << e.what() << endl;
         return 1;

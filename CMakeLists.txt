@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address,undefined")
+set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=address,undefined")
+
 set(DIJKSTRAS_SRC_FILES
   src/dijkstras.h
   src/dijkstras.cpp
@@ -26,7 +29,7 @@ add_executable(ladder_main
   src/ladder_main.cpp
 )
 
-find_package(GTest)
+find_package(GTest REQUIRED)
 if (GTest_FOUND)
   set(STUDENT_TEST_FILES
     gtest/gtestmain.cpp
@@ -38,7 +41,11 @@ if (GTest_FOUND)
     ${DIJKSTRAS_SRC_FILES}
     ${LADDER_SRC_FILES}
   )
+
   target_include_directories(student_gtests PRIVATE src ${GTEST_INCLUDE_DIRS})
   target_link_libraries(student_gtests PRIVATE ${GTEST_LIBRARIES})
-endif()
 
+  # Add the test to the CTest suite to allow `make test` or `ctest`
+  enable_testing()
+  add_test(NAME StudentTests COMMAND student_gtests)
+endif()
